@@ -33,6 +33,7 @@ const login = async (req = request, res = response) => {
       maxAge: 1000 * 60 * 60 * 4,
       sameSite: 'none',
       secure: true,
+      domain: '.onrender.com',
     });
 
     return res.status(200).json({
