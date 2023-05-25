@@ -34,10 +34,10 @@ const login = async (req = request, res = response) => {
       sameSite: 'none',
       secure: true,
       domain: [
-        'agronomiacentral.com',
+        'https://acrepo.onrender.com',
+        'https://www.agronomiacentral.com',
+        'acrepo.onrender.com',
         '.agronomiacentral.com',
-        '.onrender.com',
-        'onrender.com',
       ],
     });
 
