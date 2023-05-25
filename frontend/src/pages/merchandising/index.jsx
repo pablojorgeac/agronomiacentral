@@ -43,9 +43,7 @@ export default function Merchandising({ props }) {
   );
 }
 export async function getStaticProps() {
-  const res = await fetch(
-    'https://club-agronomia-central-production.up.railway.app/api/products'
-  );
+  const res = await fetch('https://acrepo.onrender.com/api/products');
   const props = await res.json();
   return {
     props: {

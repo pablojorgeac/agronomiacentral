@@ -4,12 +4,12 @@ import { useMatches, useDates } from '@/hooks';
 import useStore from '@/store/globalstore';
 import { useState, useEffect } from 'react';
 
-
 export default function Escuelita({ data }) {
-
-
   const { nextDates } = useDates();
-  const showMatches = nextDates(data.filter(m=>m.discipline==='Escuelita de Fútbol'),1)
+  const showMatches = nextDates(
+    data.filter((m) => m.discipline === 'Escuelita de Fútbol'),
+    1
+  );
 
   return (
     <Layout
@@ -59,16 +59,20 @@ export default function Escuelita({ data }) {
         </div>
       </div>
 
-      {
-        showMatches.length===0? <div className="flex flex-row items-center justify-center mt-8">
-                  <p className="pl-2">No hay próximos encuentros programados para esta disciplina</p>
-          </div>:
-      <MatchesInfo
-        data={showMatches}
-        classname={
-          'bg-indigo-100 dark:bg-[#2C2C2C]  w-full h-full flex items-center'
-        }
-        iconOne={   <svg
+      {showMatches.length === 0 ? (
+        <div className="flex flex-row items-center justify-center mt-8">
+          <p className="pl-2">
+            No hay próximos encuentros programados para esta disciplina
+          </p>
+        </div>
+      ) : (
+        <MatchesInfo
+          data={showMatches}
+          classname={
+            'bg-indigo-100 dark:bg-[#2C2C2C]  w-full h-full flex items-center'
+          }
+          iconOne={
+            <svg
               width="64px"
               height="64px"
               viewBox="0 0 48 48"
@@ -119,9 +123,10 @@ export default function Escuelita({ data }) {
                   strokeLinejoin="round"
                 ></path>{' '}
               </g>
-            </svg>}
-
-        iconTwo={   <svg
+            </svg>
+          }
+          iconTwo={
+            <svg
               width="64px"
               height="64px"
               viewBox="0 0 48 48"
@@ -172,17 +177,17 @@ export default function Escuelita({ data }) {
                   strokeLinejoin="round"
                 ></path>{' '}
               </g>
-            </svg>}
-      />}
+            </svg>
+          }
+        />
+      )}
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      'https://club-agronomia-central-production.up.railway.app/api/matches'
-    );
+    const res = await fetch('https://acrepo.onrender.com/api/matches');
     const data = await res.json();
 
     return {

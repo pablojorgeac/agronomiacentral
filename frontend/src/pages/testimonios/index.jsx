@@ -4,11 +4,10 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Testimonials({ testimonials }) {
-  const ordenar = (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  const ordenar = (a, b) =>
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   // paginado
-  const [testimonialsLocal, setTestiminialsLocal] = useState(
-    testimonials
-  );
+  const [testimonialsLocal, setTestiminialsLocal] = useState(testimonials);
 
   const { currentItems, pages, currentPage, setCurrentPage } = usePagination(
     testimonialsLocal.sort(ordenar),
@@ -64,9 +63,7 @@ export default function Testimonials({ testimonials }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    'https://club-agronomia-central-production.up.railway.app/api/testimonials'
-  );
+  const res = await fetch('https://acrepo.onrender.com/api/testimonials');
   const testimonials = await res.json();
   return {
     props: {

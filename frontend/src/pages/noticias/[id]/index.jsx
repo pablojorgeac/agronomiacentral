@@ -26,7 +26,7 @@ export default function Post({ post }) {
 
 export async function getServerSideProps({ params }) {
   const response = await fetch(
-    `https://club-agronomia-central-production.up.railway.app/api/posts/${params.id}`
+    `https://acrepo.onrender.com/api/posts/${params.id}`
   );
   const post = await response.json();
 

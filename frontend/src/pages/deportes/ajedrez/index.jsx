@@ -6,10 +6,12 @@ import twitter from '../../../../public/contact-img/twitter.svg';
 import Image from 'next/image';
 import { useDates } from '@/hooks';
 
-export default function Chess({data}) {
-
+export default function Chess({ data }) {
   const { nextDates } = useDates();
-  const showMatches = nextDates(data.filter(m=>m.discipline==='Ajedrez'),1)
+  const showMatches = nextDates(
+    data.filter((m) => m.discipline === 'Ajedrez'),
+    1
+  );
 
   return (
     <Layout
@@ -124,13 +126,17 @@ export default function Chess({data}) {
           </a>
         </div>
       </div>
-      {
-        showMatches.length===0? <div className="flex flex-row items-center justify-center mt-8">
-                  <p className="pl-2">No hay próximos encuentros programados para esta disciplina</p>
-          </div>:
-      <MatchesInfo
-        data={showMatches}
-        iconOne={ <svg
+      {showMatches.length === 0 ? (
+        <div className="flex flex-row items-center justify-center mt-8">
+          <p className="pl-2">
+            No hay próximos encuentros programados para esta disciplina
+          </p>
+        </div>
+      ) : (
+        <MatchesInfo
+          data={showMatches}
+          iconOne={
+            <svg
               height={60}
               width={60}
               version="1.1"
@@ -169,9 +175,10 @@ export default function Chess({data}) {
                   />
                 </g>
               </g>
-            </svg>}
-
-          iconTwo={ <svg
+            </svg>
+          }
+          iconTwo={
+            <svg
               height={60}
               width={60}
               version="1.1"
@@ -210,22 +217,20 @@ export default function Chess({data}) {
                   />
                 </g>
               </g>
-            </svg>}
-
-        classname={
-          'bg-indigo-100 dark:bg-[#2C2C2C]  w-full h-full flex items-center'
-        }
-      />}
+            </svg>
+          }
+          classname={
+            'bg-indigo-100 dark:bg-[#2C2C2C]  w-full h-full flex items-center'
+          }
+        />
+      )}
     </Layout>
   );
 }
 
-
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      'https://club-agronomia-central-production.up.railway.app/api/matches'
-    );
+    const res = await fetch('https://acrepo.onrender.com/api/matches');
     const data = await res.json();
 
     return {

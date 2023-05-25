@@ -6,16 +6,18 @@ import { useMatches, useDates } from '@/hooks';
 import useStore from '@/store/globalstore';
 import { useState, useEffect } from 'react';
 
-export default function FutSal({data}) {
+export default function FutSal({ data }) {
   // const { matches } = useStore();
   // const { getMatches } = useMatches();
   const { nextDates } = useDates();
-  const showMatches = nextDates(data.filter(m=>m.discipline==='Futsal'),1)
+  const showMatches = nextDates(
+    data.filter((m) => m.discipline === 'Futsal'),
+    1
+  );
 
   // useEffect(()=>{
   //   getMatches();
   // }, [])
-
 
   return (
     <Layout
@@ -113,16 +115,20 @@ export default function FutSal({data}) {
         </div>
       </div>
 
-      {
-        showMatches.length===0? <div className="flex flex-row items-center justify-center mt-8">
-                  <p className="pl-2">No hay próximos encuentros programados para esta disciplina</p>
-          </div>:
-      <MatchesInfo
-        data={showMatches}
-        classname={
-          'w-full h-full flex items-center bg-zinc-100 dark:bg-[#353434b4]'
-        }
-        iconOne={  <svg
+      {showMatches.length === 0 ? (
+        <div className="flex flex-row items-center justify-center mt-8">
+          <p className="pl-2">
+            No hay próximos encuentros programados para esta disciplina
+          </p>
+        </div>
+      ) : (
+        <MatchesInfo
+          data={showMatches}
+          classname={
+            'w-full h-full flex items-center bg-zinc-100 dark:bg-[#353434b4]'
+          }
+          iconOne={
+            <svg
               fill="#1b418a"
               height={60}
               width={60}
@@ -154,9 +160,10 @@ export default function FutSal({data}) {
                   </g>
                 </g>
               </g>
-            </svg>}
-
-        iconTwo={  <svg
+            </svg>
+          }
+          iconTwo={
+            <svg
               fill="#fb923c"
               height={60}
               width={60}
@@ -188,17 +195,17 @@ export default function FutSal({data}) {
                   </g>
                 </g>
               </g>
-            </svg>}
-      />}
+            </svg>
+          }
+        />
+      )}
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      'https://club-agronomia-central-production.up.railway.app/api/matches'
-    );
+    const res = await fetch('https://acrepo.onrender.com/api/matches');
     const data = await res.json();
 
     return {

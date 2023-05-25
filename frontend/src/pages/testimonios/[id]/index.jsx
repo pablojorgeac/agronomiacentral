@@ -35,7 +35,7 @@ export default function Testimony({ testimonials }) {
 
 export async function getServerSideProps({ params }) {
   const res = await fetch(
-    `https://club-agronomia-central-production.up.railway.app/api/testimonials/${params.id}`
+    `https://acrepo.onrender.com/api/testimonials/${params.id}`
   );
   const testimonials = await res.json();
 

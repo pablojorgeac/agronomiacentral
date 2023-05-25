@@ -6,11 +6,12 @@ import { useMatches, useDates } from '@/hooks';
 import useStore from '@/store/globalstore';
 import { useState, useEffect } from 'react';
 
-
-
 export default function FutFem({ data }) {
   const { nextDates } = useDates();
-  const showMatches = nextDates(data.filter(m=>m.discipline==='Futsal Femenino'),1)
+  const showMatches = nextDates(
+    data.filter((m) => m.discipline === 'Futsal Femenino'),
+    1
+  );
 
   return (
     <Layout
@@ -167,15 +168,20 @@ export default function FutFem({ data }) {
           </div>
         </a>
       </div>
-      {
-        showMatches.length===0? <div className="flex flex-row items-center justify-center mt-8">
-                  <p className="pl-2">No hay próximos encuentros programados para esta disciplina</p>
-          </div>:<MatchesInfo
-        data={showMatches}
-        classname={
-          'w-full h-full flex items-center bg-zinc-200 dark:bg-[#353434b4]'
-        }
-        iconOne={ <svg
+      {showMatches.length === 0 ? (
+        <div className="flex flex-row items-center justify-center mt-8">
+          <p className="pl-2">
+            No hay próximos encuentros programados para esta disciplina
+          </p>
+        </div>
+      ) : (
+        <MatchesInfo
+          data={showMatches}
+          classname={
+            'w-full h-full flex items-center bg-zinc-200 dark:bg-[#353434b4]'
+          }
+          iconOne={
+            <svg
               fill="#1b418a"
               width={60}
               height={60}
@@ -193,8 +199,10 @@ export default function FutFem({ data }) {
               <g id="SVGRepo_iconCarrier">
                 <path d="M12,23A11,11,0,1,0,1,12,11.046,11.046,0,0,0,12,23ZM8,20.05a9.029,9.029,0,0,1-2.6-1.956A2,2,0,0,1,8,20.05Zm8,0a2,2,0,0,1,2.6-1.956A8.989,8.989,0,0,1,16,20.05Zm3.369-13.2a9.236,9.236,0,0,1,1.395,3.135A2,2,0,0,1,19.37,6.851Zm-5.745-3.7a1.985,1.985,0,0,1-3.25,0A8.783,8.783,0,0,1,13.625,3.155Zm-9,3.7A2,2,0,0,1,3.235,9.986,8.73,8.73,0,0,1,4.63,6.851ZM5.964,5.344a9.008,9.008,0,0,1,2.459-1.6,3.965,3.965,0,0,0,7.154,0,9.008,9.008,0,0,1,2.459,1.6A3.987,3.987,0,0,0,21,12a8.934,8.934,0,0,1-1.19,4.454,3.976,3.976,0,0,0-5.729,4.293,8.685,8.685,0,0,1-4.162,0A3.976,3.976,0,0,0,4.19,16.454,8.934,8.934,0,0,1,3,12,3.987,3.987,0,0,0,5.964,5.344ZM12,16a4,4,0,1,0-4-4A4,4,0,0,0,12,16Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,12,10Z" />
               </g>
-            </svg>}
-        iconTwo={ <svg
+            </svg>
+          }
+          iconTwo={
+            <svg
               fill="#fb923c"
               width={60}
               height={60}
@@ -212,17 +220,17 @@ export default function FutFem({ data }) {
               <g id="SVGRepo_iconCarrier">
                 <path d="M12,23A11,11,0,1,0,1,12,11.046,11.046,0,0,0,12,23ZM8,20.05a9.029,9.029,0,0,1-2.6-1.956A2,2,0,0,1,8,20.05Zm8,0a2,2,0,0,1,2.6-1.956A8.989,8.989,0,0,1,16,20.05Zm3.369-13.2a9.236,9.236,0,0,1,1.395,3.135A2,2,0,0,1,19.37,6.851Zm-5.745-3.7a1.985,1.985,0,0,1-3.25,0A8.783,8.783,0,0,1,13.625,3.155Zm-9,3.7A2,2,0,0,1,3.235,9.986,8.73,8.73,0,0,1,4.63,6.851ZM5.964,5.344a9.008,9.008,0,0,1,2.459-1.6,3.965,3.965,0,0,0,7.154,0,9.008,9.008,0,0,1,2.459,1.6A3.987,3.987,0,0,0,21,12a8.934,8.934,0,0,1-1.19,4.454,3.976,3.976,0,0,0-5.729,4.293,8.685,8.685,0,0,1-4.162,0A3.976,3.976,0,0,0,4.19,16.454,8.934,8.934,0,0,1,3,12,3.987,3.987,0,0,0,5.964,5.344ZM12,16a4,4,0,1,0-4-4A4,4,0,0,0,12,16Zm0-6a2,2,0,1,1-2,2A2,2,0,0,1,12,10Z" />
               </g>
-            </svg>}
-      />}
+            </svg>
+          }
+        />
+      )}
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      'https://club-agronomia-central-production.up.railway.app/api/matches'
-    );
+    const res = await fetch('https://acrepo.onrender.com/api/matches');
     const data = await res.json();
 
     return {

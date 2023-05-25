@@ -5,14 +5,12 @@ import { useMatches, useDates } from '@/hooks';
 import useStore from '@/store/globalstore';
 import { useState, useEffect } from 'react';
 
-
 export default function Taekwondo({ data }) {
-
-
   const { nextDates } = useDates();
-  const showMatches = nextDates(data.filter(m=>m.discipline==='Taekwondo'),1)
-
-
+  const showMatches = nextDates(
+    data.filter((m) => m.discipline === 'Taekwondo'),
+    1
+  );
 
   // const { matches } = useStore();
   // const { getMatches } = useMatches();
@@ -23,19 +21,23 @@ export default function Taekwondo({ data }) {
   //   getMatches();
   // }, [])
 
-
   return (
     <Layout image={images[4].src} title="TAEKWONDO">
       <InfoSlider images={images} info={info} />
-      {
-        showMatches.length===0? <div className="flex flex-row items-center justify-center mt-8">
-                  <p className="pl-2">No hay próximos encuentros programados para esta disciplina</p>
-          </div>:<MatchesInfo
-        data={showMatches}
-        classname={
-          'bg-indigo-100 dark:bg-indigo-400 w-full h-full flex items-center'
-        }
-        iconOne={ <svg
+      {showMatches.length === 0 ? (
+        <div className="flex flex-row items-center justify-center mt-8">
+          <p className="pl-2">
+            No hay próximos encuentros programados para esta disciplina
+          </p>
+        </div>
+      ) : (
+        <MatchesInfo
+          data={showMatches}
+          classname={
+            'bg-indigo-100 dark:bg-indigo-400 w-full h-full flex items-center'
+          }
+          iconOne={
+            <svg
               fill="#1b418a"
               viewBox="0 0 24 24"
               id="taekwondo-2"
@@ -57,9 +59,10 @@ export default function Taekwondo({ data }) {
                   style={{ fill: '#1b418a' }}
                 />
               </g>
-            </svg>}
-
-          iconTwo={ <svg
+            </svg>
+          }
+          iconTwo={
+            <svg
               fill="#fb923c"
               viewBox="0 0 24 24"
               id="taekwondo-21"
@@ -81,18 +84,17 @@ export default function Taekwondo({ data }) {
                   style={{ fill: '#1b418a' }}
                 />
               </g>
-            </svg>}
-      /> }
-
+            </svg>
+          }
+        />
+      )}
     </Layout>
   );
 }
 
 export async function getStaticProps() {
   try {
-    const res = await fetch(
-      'https://club-agronomia-central-production.up.railway.app/api/matches'
-    );
+    const res = await fetch('https://acrepo.onrender.com/api/matches');
     const data = await res.json();
 
     return {

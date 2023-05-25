@@ -6,7 +6,8 @@ import { useFilter } from '@/components/Page';
 
 export default function Posts({ posts }) {
   const [filteredItems, setFilter] = useFilter(posts);
-  const ordenar = (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  const ordenar = (a, b) =>
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   const { currentItems, pages, currentPage, setCurrentPage } = usePagination(
     filteredItems.sort(ordenar),
     4
@@ -102,9 +103,7 @@ export default function Posts({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(
-    'https://club-agronomia-central-production.up.railway.app/api/posts'
-  );
+  const res = await fetch('https://acrepo.onrender.com/api/posts');
   const posts = await res.json();
   return {
     props: {
