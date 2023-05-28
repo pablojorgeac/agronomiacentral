@@ -41,7 +41,7 @@ const login = async (req = request, res = response) => {
       token,
     });
   } catch (error) {
-    return res.status(500).json({
+    return res.status(400).json({
       msg: error.message,
     });
   }
