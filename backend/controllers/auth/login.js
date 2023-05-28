@@ -33,12 +33,6 @@ const login = async (req = request, res = response) => {
       maxAge: 1000 * 60 * 60 * 4,
       sameSite: 'none',
       secure: true,
-      domain: [
-        'https://acrepo.onrender.com',
-        'https://www.agronomiacentral.com',
-        'acrepo.onrender.com',
-        '.agronomiacentral.com',
-      ],
     });
 
     return res.status(200).json({

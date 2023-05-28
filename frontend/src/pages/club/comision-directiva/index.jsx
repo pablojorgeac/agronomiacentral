@@ -60,7 +60,9 @@ export default function SteeringCommittee({ props }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://acrepo.onrender.com/api/directors');
+  const res = await fetch(
+    'ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/directors'
+  );
   const props = await res.json();
   return {
     props: {

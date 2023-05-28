@@ -26,7 +26,7 @@ export default function Post({ post }) {
 
 export async function getServerSideProps({ params }) {
   const response = await fetch(
-    `https://acrepo.onrender.com/api/posts/${params.id}`
+    `ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/posts/${params.id}`
   );
   const post = await response.json();
 

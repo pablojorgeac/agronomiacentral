@@ -108,7 +108,9 @@ export default function Posts({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://acrepo.onrender.com/api/posts');
+  const res = await fetch(
+    'ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/posts'
+  );
   const posts = await res.json();
   return {
     props: {

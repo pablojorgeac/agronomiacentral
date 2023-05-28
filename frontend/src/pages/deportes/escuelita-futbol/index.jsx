@@ -187,7 +187,9 @@ export default function Escuelita({ data }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch('https://acrepo.onrender.com/api/matches');
+    const res = await fetch(
+      'ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/matches'
+    );
     const data = await res.json();
 
     return {

@@ -63,7 +63,9 @@ export default function Testimonials({ testimonials }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('https://acrepo.onrender.com/api/testimonials');
+  const res = await fetch(
+    'ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/testimonials'
+  );
   const testimonials = await res.json();
   return {
     props: {
