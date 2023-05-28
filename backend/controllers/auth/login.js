@@ -2,6 +2,7 @@ const { response, request } = require('express');
 const User = require('../../models/User');
 const bcryptjs = require('bcryptjs');
 const { generateJWT } = require('../../helpers/generateJWT');
+const e = require('express');
 
 const login = async (req = request, res = response) => {
   const { email, password } = req.body;
@@ -41,7 +42,7 @@ const login = async (req = request, res = response) => {
     });
   } catch (error) {
     return res.status(500).json({
-      msg: 'Contact with administrator',
+      msg: error.message,
     });
   }
 };
