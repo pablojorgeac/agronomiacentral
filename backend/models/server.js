@@ -47,7 +47,7 @@ class Server {
           'Accept',
         ],
         credentials: true,
-        origin: ['https://www.agronomiacentral.com'],
+        origin: ['https://www.agronomiacentral.com', 'http://localhost:3000'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
       })
     );
