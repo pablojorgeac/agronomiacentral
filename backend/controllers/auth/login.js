@@ -34,6 +34,7 @@ const login = async (req = request, res = response) => {
       sameSite: 'none',
       secure: true,
     });
+    localStorage.setItem('authToken', token);
 
     return res.status(200).json({
       token,
