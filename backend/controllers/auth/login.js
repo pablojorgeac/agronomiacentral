@@ -33,9 +33,8 @@ const login = async (req = request, res = response) => {
     res.cookie('authToken', token, {
       maxAge: 1000 * 60 * 60 * 4,
       sameSite: 'none',
-      secure: true,
+      secure: false,
     });
-    window.localStorage.setItem('authToken', token);
 
     return res.status(200).json({
       token,
