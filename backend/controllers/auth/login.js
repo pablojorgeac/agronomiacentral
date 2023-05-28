@@ -6,7 +6,7 @@ const e = require('express');
 
 const login = async (req = request, res = response) => {
   const { email, password } = req.body;
-
+  console.log('login', req.body);
   try {
     // verify the email exist
     const user = await User.findOne({ email });
