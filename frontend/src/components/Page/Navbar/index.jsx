@@ -20,6 +20,7 @@ export function Navbar() {
         <NavLink text={'Deportes'} link={'/deportes'} sonLinks={sportsLinks} />
         <NavLink text={'Testimonios'} link={'/testimonios'} />
         <NavLink text={'Noticias'} link={'/noticias'} />
+        <NavLink text={'Bachi Agrono'} link={'/bachi'} />
         <NavLink text={'Merchandising'} link={'/merchandising'} />
         <NavLink text={'Contactanos'} link={'/contacto'} />
       </ul>
