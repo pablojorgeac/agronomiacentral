@@ -109,6 +109,10 @@ export function MobileMenu({ openMenu }) {
                     <div className="h-10 flex items-center ">
                         <NavLink text={'Noticias'} link={'/noticias'} />
                     </div>
+                    {/* Link  Bachi */}
+                    <div className="h-10 flex items-center ">
+                        <NavLink text={'Bachi Agrono'} link={'/bachi'} />
+                    </div>
                     {/* Link Merchandising */}
                     <div className="h-10 flex items-center ">
                         <NavLink text={'Merchandising'} link={'/merchandising'} />
