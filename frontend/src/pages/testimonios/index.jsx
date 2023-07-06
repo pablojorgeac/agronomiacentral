@@ -64,7 +64,7 @@ export default function Testimonials({ testimonials }) {
 
 export async function getServerSideProps() {
   const res = await fetch(
-    'ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/testimonials'
+    'https://club-agronomia-central-production-0211.up.railway.app/api/testimonials'
   );
   const testimonials = await res.json();
   return {
