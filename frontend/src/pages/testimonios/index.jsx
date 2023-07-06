@@ -62,7 +62,7 @@ export default function Testimonials({ testimonials }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(
     'https://club-agronomia-central-production-0211.up.railway.app/api/testimonials'
   );
@@ -71,5 +71,6 @@ export async function getServerSideProps() {
     props: {
       testimonials,
     },
+    revalidate:3600,
   };
 }
