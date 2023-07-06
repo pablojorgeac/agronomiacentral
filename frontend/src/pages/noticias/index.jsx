@@ -109,7 +109,7 @@ export default function Posts({ posts }) {
 
 export async function getStaticProps() {
   const res = await fetch(
-    'ec2-3-21-37-175.us-east-2.compute.amazonaws.com/api/posts'
+    'https://club-agronomia-central-production-0211.up.railway.app/api/posts'
   );
   const posts = await res.json();
   return {
