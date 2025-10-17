@@ -32,7 +32,7 @@ export function Layout({ children, image, title }) {
         <div className='dark:text-black z-50 absolute'>
         <WhatsAppWidget
           CompanyIcon={ClubIconSVG}
-          phoneNumber="5491156931160"
+          phoneNumber="573208349756"
           companyName="Club Agronomía Central"
           replyTimeText="Usualmente responde en un día"
           message="¡Hola! ¿Cómo puedo ayudarte?"
